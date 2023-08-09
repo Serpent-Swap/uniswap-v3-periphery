@@ -1,8 +1,11 @@
-import '@nomiclabs/hardhat-ethers'
-import '@nomiclabs/hardhat-etherscan'
-import '@nomiclabs/hardhat-waffle'
-import 'hardhat-typechain'
-import 'hardhat-watcher'
+import * as dotenv from 'dotenv';
+dotenv.config();
+
+import '@nomiclabs/hardhat-ethers';
+import '@nomiclabs/hardhat-etherscan';
+import '@nomiclabs/hardhat-waffle';
+import 'hardhat-typechain';
+import 'hardhat-watcher';
 
 const LOW_OPTIMIZER_COMPILER_SETTINGS = {
   version: '0.7.6',
@@ -16,7 +19,7 @@ const LOW_OPTIMIZER_COMPILER_SETTINGS = {
       bytecodeHash: 'none',
     },
   },
-}
+};
 
 const LOWEST_OPTIMIZER_COMPILER_SETTINGS = {
   version: '0.7.6',
@@ -30,7 +33,7 @@ const LOWEST_OPTIMIZER_COMPILER_SETTINGS = {
       bytecodeHash: 'none',
     },
   },
-}
+};
 
 const DEFAULT_COMPILER_SETTINGS = {
   version: '0.7.6',
@@ -44,7 +47,7 @@ const DEFAULT_COMPILER_SETTINGS = {
       bytecodeHash: 'none',
     },
   },
-}
+};
 
 export default {
   networks: {
@@ -52,37 +55,60 @@ export default {
       allowUnlimitedContractSize: false,
     },
     mainnet: {
-      url: `https://mainnet.infura.io/v3/${process.env.INFURA_API_KEY}`,
+      url: `https://mainnet.infura.io/v3/${process.env.INFURA_KEY}`,
     },
     ropsten: {
-      url: `https://ropsten.infura.io/v3/${process.env.INFURA_API_KEY}`,
+      url: `https://ropsten.infura.io/v3/${process.env.INFURA_KEY}`,
     },
     rinkeby: {
-      url: `https://rinkeby.infura.io/v3/${process.env.INFURA_API_KEY}`,
+      url: `https://rinkeby.infura.io/v3/${process.env.INFURA_KEY}`,
     },
     goerli: {
-      url: `https://goerli.infura.io/v3/${process.env.INFURA_API_KEY}`,
+      url: `https://goerli.infura.io/v3/${process.env.INFURA_KEY}`,
     },
     kovan: {
-      url: `https://kovan.infura.io/v3/${process.env.INFURA_API_KEY}`,
+      url: `https://kovan.infura.io/v3/${process.env.INFURA_KEY}`,
     },
     arbitrumRinkeby: {
-      url: `https://arbitrum-rinkeby.infura.io/v3/${process.env.INFURA_API_KEY}`,
+      url: `https://arbitrum-rinkeby.infura.io/v3/${process.env.INFURA_KEY}`,
     },
     arbitrum: {
-      url: `https://arbitrum-mainnet.infura.io/v3/${process.env.INFURA_API_KEY}`,
+      url: `https://arbitrum-mainnet.infura.io/v3/${process.env.INFURA_KEY}`,
     },
     optimismKovan: {
-      url: `https://optimism-kovan.infura.io/v3/${process.env.INFURA_API_KEY}`,
+      url: `https://optimism-kovan.infura.io/v3/${process.env.INFURA_KEY}`,
     },
     optimism: {
-      url: `https://optimism-mainnet.infura.io/v3/${process.env.INFURA_API_KEY}`,
+      url: `https://optimism-mainnet.infura.io/v3/${process.env.INFURA_KEY}`,
     },
+    xrplDevnet: {
+      url: 'https://rpc-evm-sidechain.xrpl.org/',
+      chainId: 1440002,
+      accounts: [process.env.DEPLOYER_PRIVATE_KEY],
+      timeout: 10000000
+    },
+    sepolia: {
+      url: `https://sepolia.infura.io/v3/${process.env.INFURA_KEY}`,
+      chainId: 11155111,
+      accounts: [process.env.DEPLOYER_PRIVATE_KEY],
+      timeout: 10000000
+    }
   },
   etherscan: {
     // Your API key for Etherscan
     // Obtain one at https://etherscan.io/
     apiKey: process.env.ETHERSCAN_API_KEY,
+    customChains: [
+      {
+        network: 'xrplDevnet',
+        chainId: 1440002,
+        urls: {
+          apiURL: 'https://evm-sidechain.xrpl.org/api',
+          browserURL: 'https://evm-sidechain.xrpl.org',
+        },
+        timeout: 400000,
+      },
+    ],
   },
   solidity: {
     compilers: [DEFAULT_COMPILER_SETTINGS],
@@ -101,4 +127,4 @@ export default {
       verbose: true,
     },
   },
-}
+};
