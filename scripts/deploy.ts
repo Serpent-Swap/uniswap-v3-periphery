@@ -9,13 +9,13 @@ async function main() {
 
   switch (currentNetwork.name) {
     case 'xrplDevnet':
-      poolFactory = '0x71992849909a5Ed0c8Cc3928F5F5287B13d08aBA';
-      wrappedNative = '0xb560eF7E09609C939E09a1a15961043278D27b03';
+      poolFactory = '0x123b5c88Cc98f8f73b686cd8bdEA213EAa4360e8';
+      wrappedNative = '0x8049c9E3cE496b47E0fE8aa8EdAEf751cF87e07d';
       nativeCurrencyLabel = 'XRP';
       break;
     case 'sepolia':
-      poolFactory = '0x76DDF5E3Cb4412fD8dc39440c56c0C58D0705290';
-      wrappedNative = '0x0c5C1D094f92eFfd9A6a9b0546b7b1B852B442a2';
+      poolFactory = '0x19f217A65E827f6fA955F89b7ABfACcCcf7c9860';
+      wrappedNative = '0x7b79995e5f793A07Bc00c21412e50Ecae098E7f9';
       nativeCurrencyLabel = 'ETH';
       break;
   }
